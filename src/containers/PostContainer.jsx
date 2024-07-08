@@ -7,6 +7,7 @@ import AddPostModal from "../components/AddPostModal";
 import { Button } from "flowbite-react";
 import { BiArrowToLeft, BiArrowToRight } from "react-icons/bi";
 import { toast } from "react-toastify";
+import Loader from "../components/Loader";
 
 function PostContainer() {
   const dispatch = useDispatch();
@@ -30,23 +31,11 @@ function PostContainer() {
 
   const handleSubmit = (values, { setSubmitting, resetForm }) => {
     dispatch(addPost(values))
-      .unwrap()
-      .then(() => {
-        toast.success("Post added successfully");
-        resetForm();
-        setOpenModal(false);
-      })
-      .catch((error) => {
-        toast.error(`Failed to add post: ${error}`);
-      })
-      .finally(() => {
-        setSubmitting(false);
-      });
   };
 
   const handleSearch = (searchQuery) => {
     setQuery(searchQuery);
-    setCurrentPage(1); // Reset to the first page for new search queries
+    setCurrentPage(1); 
   };
 
   const handlePageChange = (newPage) => {
@@ -71,7 +60,7 @@ function PostContainer() {
           <SearchBar onSearch={handleSearch} />
         </div>
         {isLoading ? (
-          <div className="flex justify-center items-center h-[50vh]">Loading...</div>
+          <div className="flex justify-center items-center h-[50vh]"><Loader/></div>
         ) : (
           <>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">

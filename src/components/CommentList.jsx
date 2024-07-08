@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { deleteComment, updateComment } from "../features/comments/commentSlice";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import Loader from "./Loader";
 
 const CommentList = ({ comments, userId }) => {
   const dispatch = useDispatch();
@@ -118,7 +119,7 @@ const CommentList = ({ comments, userId }) => {
               <Form className="space-y-6">
                 <h3
                   style={{ marginBottom: "10px" }}
-                  className="text-xl font-medium text-gray-900 dark:text-white"
+                  className="text-xl font-medium text-gray-900 dark:text-white mt-8"
                 >
                   Update Comment
                 </h3>
@@ -139,7 +140,7 @@ const CommentList = ({ comments, userId }) => {
                   className="post-btn mt-3"
                   disabled={isSubmitting}
                 >
-                  {isSubmitting ? "Updating..." : "Update"}
+                  {isSubmitting ? <Loader/> : "Update"}
                 </Button>
               </Form>
             )}

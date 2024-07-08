@@ -12,15 +12,17 @@ const PostCard = ({ post }) => {
   };
 
   return (
-    <Card className="w-full mb-8 p-1">
-      <h5 className="text-2xl font-bold tracking-tight text-gray-900">
-        {truncateText(post.title || '', 10)}
-      </h5>
-      <p className="font-normal text-gray-700">
-        {truncateText(post.body || '', 10)}
-      </p>
+    <Card className="w-full mb-8 p-4 flex flex-col h-full justify-between">
+      <div className="flex flex-col justify-between h-full gap-8">
+        <h5 className="text-2xl font-bold tracking-tight text-gray-900">
+            {truncateText(post.title || '', 10)}
+        </h5>
+        <p className="font-normal text-gray-700 flex-grow">
+          {truncateText(post.body || '', 10)}
+        </p>
+      </div>
       <Link to={`/posts/${post._id}`} className="text-blue-500">
-        <Button className="theme">
+        <Button className="theme mt-auto">
           Read more
           <svg
             className="-mr-1 ml-2 h-4 w-4"

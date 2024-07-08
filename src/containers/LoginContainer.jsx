@@ -1,9 +1,10 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginUser, reset } from '../features/auth/authSlice';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { loginSchema } from '../utils/validationSchema';
+import Loader from '../components/Loader';
 
 const LoginContainer = () => {
   const dispatch = useDispatch();
@@ -56,12 +57,15 @@ const LoginContainer = () => {
                 className="bg-blue-500 text-white px-4 py-2"
                 disabled={isSubmitting || isLoading}
               >
-                {isLoading ? "Loading" : "Login"}
+                {isLoading ? <Loader/> : "Login"}
               </button>
               {isError && <p className="text-red-500 text-sm mt-2">{message}</p>}
+
             </Form>
           )}
         </Formik>
+        <p className='mt-8'>Don't have an account yet? <Link to="/register" className='text-blue-500 hover:text-blue-900'>Click here to register</Link></p>
+
       </div>
     </div>
   );

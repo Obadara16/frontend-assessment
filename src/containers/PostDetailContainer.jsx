@@ -7,6 +7,7 @@ import CommentList from '../components/CommentList';
 import CommentForm from '../components/CommentForm';
 import { Button, Modal } from 'flowbite-react';
 import { HiOutlineExclamationCircle } from 'react-icons/hi';
+import Loader from '../components/Loader';
 
 const PostDetailContainer = () => {
   const { id } = useParams();
@@ -27,13 +28,13 @@ const PostDetailContainer = () => {
     setOpenDeleteModal(false);
   };
 
-  if (isLoading) return <div className="flex justify-center items-center h-[80vh]">Loading...</div>;
+  if (isLoading) return <div className="flex justify-center items-center h-[80vh]"><Loader/></div>;
 
   return (
     <>
       <div className="max-w-5xl p-4 mx-auto mt-4">
         <div className="mb-3 flex items-center justify-between">
-          <h3 className="text-2xl">{post?.title || 'Loading...'}</h3>
+          <h3 className="text-2xl">{post?.title || <Loader/>}</h3>
           {post?.userId?._id === user?._id && (
             <div className="flex flex-col">
               <button

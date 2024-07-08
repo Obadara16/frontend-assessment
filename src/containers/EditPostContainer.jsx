@@ -4,6 +4,7 @@ import { fetchPost, updatePost, reset } from "../features/posts/postSlice";
 import { useNavigate, useParams } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { postSchema } from "../utils/validationSchema";
+import Loader from "../components/Loader";
 
 const EditPostContainer = () => {
   const { postId } = useParams();
@@ -18,7 +19,7 @@ const EditPostContainer = () => {
 
 
   if (isLoading || !post) {
-    return <div className="flex justify-center items-center h-[50vh]">Loading...</div>;
+    return <div className="flex justify-center items-center h-[50vh]"><Loader/></div>;
   }
 
   return (
