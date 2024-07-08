@@ -9,7 +9,7 @@ import Loader from '../components/Loader';
 const LoginContainer = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { user, isLoading, isError, isSuccess, message } = useSelector((state) => state.auth);
+  const { isLoading,  isSuccess} = useSelector((state) => state.auth);
 
   useEffect(() => {
     if (isSuccess) {
@@ -54,17 +54,16 @@ const LoginContainer = () => {
               </div>
               <button
                 type="submit"
-                className="bg-blue-500 text-white px-4 py-2"
+                className="theme text-white px-4 py-2"
                 disabled={isSubmitting || isLoading}
               >
                 {isLoading ? <Loader/> : "Login"}
               </button>
-              {isError && <p className="text-red-500 text-sm mt-2">{message}</p>}
 
             </Form>
           )}
         </Formik>
-        <p className='mt-8'>Don't have an account yet? <Link to="/register" className='text-blue-500 hover:text-blue-900'>Click here to register</Link></p>
+        <p className='mt-8'>Don't have an account yet? <Link to="/register" className='text-[#0e7490] hover:text-blue-900'>Click here to register</Link></p>
 
       </div>
     </div>

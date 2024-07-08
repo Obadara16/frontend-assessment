@@ -66,16 +66,15 @@ const RegisterContainer = () => {
               </div>
               <button
                 type="submit"
-                className="bg-blue-500 text-white px-4 py-2"
+                className="bg-[#0e7490] text-white px-4 py-2"
                 disabled={isSubmitting || isLoading}
               >
                 {isLoading ? <Loader/> : "Register"}
               </button>
-              {isError && <p className="text-red-500 text-sm mt-2">{message}</p>}
             </Form>
           )}
         </Formik>
-        <p className='mt-8'>Already a user? <Link to="/login" className='text-blue-500 hover:text-blue-900'>Click here to login</Link></p>
+        <p className='mt-8'>Already a user? <Link to="/login" className='text-[#0e7490] hover:text-blue-900'>Click here to login</Link></p>
       </div>
     </div>
   );
