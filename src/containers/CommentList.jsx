@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { deleteComment, updateComment } from "../features/comments/commentSlice";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import Loader from "./Loader";
+import Loader from "../components/Loader";
 
 const CommentList = ({ comments, userId }) => {
   const dispatch = useDispatch();
@@ -69,19 +69,19 @@ const CommentList = ({ comments, userId }) => {
       {/* Delete Confirmation Modal */}
       <Modal
         show={openDeleteModal}
-        size="md"
+        className='w-11/12 md:w-1/3 mx-auto'
         popup
         onClose={() => setOpenDeleteModal(false)}
       >
         <Modal.Header />
         <Modal.Body>
-          <div className="text-center">
+          <div className="text-center p-4">
             <h3 className="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">
               Are you sure you want to delete this comment?
             </h3>
             <div className="flex justify-center gap-4">
               <Button
-                color="failure"
+                color="red"
                 onClick={() => handleDelete(selectedComment?._id)}
               >
                 Yes, I'm sure
@@ -100,7 +100,7 @@ const CommentList = ({ comments, userId }) => {
       {/* Update Comment Modal */}
       <Modal
         show={openUpdateModal}
-        size="xl"
+        className='w-11/12 md:w-1/3 mx-auto p-4'
         popup
         onClose={() => setOpenUpdateModal(false)}
       >
@@ -116,7 +116,7 @@ const CommentList = ({ comments, userId }) => {
             }}
           >
             {({ isSubmitting }) => (
-              <Form className="space-y-6">
+              <Form className="space-y-6 p-4">
                 <h3
                   style={{ marginBottom: "10px" }}
                   className="text-xl font-medium text-gray-900 dark:text-white mt-8"

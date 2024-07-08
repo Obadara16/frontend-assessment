@@ -6,13 +6,13 @@ const AddPostModal = ({ openModal, setOpenModal, handleSubmit }) => {
   return (
     <Modal
       show={openModal}
-      size="xl"
+      className='w-11/12 md:w-1/3 mx-auto'
       onClose={() => setOpenModal(false)}
       popup
     >
       <Modal.Header />
       <Modal.Body>
-        <div className="space-y-6">
+        <div className="space-y-6 bg-white p-4">
           <h3 className="text-xl font-medium text-gray-900 dark:text-white">
             Add New Post
           </h3>

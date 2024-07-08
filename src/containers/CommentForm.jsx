@@ -4,6 +4,7 @@ import { createComment } from '../features/comments/commentSlice';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { toast } from 'react-toastify';
 import { commentSchema } from '../utils/validationSchema';
+import Loader from '../components/Loader';
 
 const CommentForm = ({ postId }) => {
   const dispatch = useDispatch();
@@ -40,7 +41,7 @@ const CommentForm = ({ postId }) => {
             className="post-btn bg-blue-500 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded"
             disabled={isSubmitting}
           >
-            Post Comment
+            {isSubmitting ? <Loader/> : "Post Comment"}
           </button>
         </Form>
       )}

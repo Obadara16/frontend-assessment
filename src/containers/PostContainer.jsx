@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchPosts, addPost } from "../features/posts/postSlice";
 import SearchBar from "../components/SearchBar";
 import PostCard from "../components/PostCard";
-import AddPostModal from "../components/AddPostModal";
+import AddPostModal from "./AddPostModal";
 import { Button } from "flowbite-react";
 import { BiArrowToLeft, BiArrowToRight } from "react-icons/bi";
 import { toast } from "react-toastify";
@@ -31,6 +31,18 @@ function PostContainer() {
 
   const handleSubmit = (values, { setSubmitting, resetForm }) => {
     dispatch(addPost(values))
+    .unwrap()
+      .then(() => {
+        toast.success("Post added successfully");
+        resetForm();
+        setOpenModal(false);
+      })
+      .catch((error) => {
+        toast.error(`Failed to add post: ${error}`);
+      })
+      .finally(() => {
+        setSubmitting(false);
+      });
   };
 
   const handleSearch = (searchQuery) => {
